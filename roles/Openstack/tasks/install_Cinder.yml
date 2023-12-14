@@ -1,0 +1,22 @@
+
+# Tasks for Installing Cinder for Ubuntu
+- name: Install Cinder packages
+  apt:
+    name:
+    - cinder-api
+    - cinder-scheduler
+    - cinder-volume
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+# Configuration of the Cinder Service
+- name: Configure Cinder
+  template:
+    src: cinder.conf.j2
+    dest: /etc/cinder/cinder.conf
+  when: ansible_distribution == "Ubuntu"
+
+- name: Create Cinder database
+  command: cinder-manage db sync
+  become_user: cinder
+  when: ansible_distribution == "Ubuntu"

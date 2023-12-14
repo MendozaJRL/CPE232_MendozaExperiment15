@@ -1,0 +1,15 @@
+---
+# tasks file for roles/Openstack
+
+- name: Execute install_Neutron.yml
+  ansible.builtin.include_tasks:
+    file: install_Neutron.yml
+
+- name: Execute install_Horizon.yml
+  ansible.builtin.include_tasks:
+    file: install_Horizon.yml
+
+- name: Execute install_Cinder.yml
+  ansible.builtin.include_tasks:
+    file: install_Cinder.yml
+

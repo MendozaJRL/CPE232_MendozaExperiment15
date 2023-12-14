@@ -1,0 +1,6 @@
+
+# Main Playbook File which will import the Tasks on the Role
+- hosts: all
+  become: true
+  roles:
+    - role: roles/Openstack
